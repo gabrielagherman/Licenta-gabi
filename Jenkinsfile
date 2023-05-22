@@ -26,7 +26,7 @@ pipeline {
 	      //sh ' docker socket'              
 	//sh 'sudo chmod 777 /var/run/docker.sock'
 		sh 'docker build -t webappv1:latest .' 
-                sh 'docker tag calculator gabrielagherman/webappv1:latest'
+                sh 'docker tag webapp1 gabrielagherman/webappv1:latest'
                
           }
         }
