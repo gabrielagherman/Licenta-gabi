@@ -1,0 +1,14 @@
+---
+- name: Deploy docker container on AWS
+  hosts: [aws-test]
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: run docker
+      docker_container:
+        name: java_container
+        image: gabrielagherman/webapp:latest
+        state: started
+        restart: yes
+        ports:
+          - "8003:8080"
