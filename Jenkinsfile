@@ -9,7 +9,7 @@ pipeline {
       stage('checkout') {
            steps {
              
-                git branch: 'main', url: 'https://github.com/gabrielagherman/Aplicatie-calculator.git'
+                git branch: 'main', url: 'https://github.com/gabrielagherman/Licenta-gabi.git'
              
           }
         }
@@ -25,8 +25,8 @@ pipeline {
            steps { 
 	      //sh ' docker socket'              
 	//sh 'sudo chmod 777 /var/run/docker.sock'
-		sh 'docker build -t webapp:latest .' 
-                sh 'docker tag calculator gabrielagherman/webapp:latest'
+		sh 'docker build -t webappv1:latest .' 
+                sh 'docker tag calculator gabrielagherman/webappv1:latest'
                
           }
         }
@@ -35,7 +35,7 @@ pipeline {
           
             steps {
         withDockerRegistry([ credentialsId: "docker-cred", url: "" ]) {
-          sh  'docker push gabrielagherman/webapp:latest'
+          sh  'docker push gabrielagherman/webappv1:latest'
         }
                   
           }
@@ -62,9 +62,9 @@ pipeline {
 	stage("Git Checkout") {
  	 steps {
    		script {
-    	  		def directory = "Aplicatie-calculator"
+    	  		def directory = "Licenta-gabi"
       			if (!fileExists(directory)) {
-       		 		sh 'git clone https://github.com/gabrielagherman/Aplicatie-calculator.git'
+       		 		sh 'git clone https://github.com/gabrielagherman/Licenta-gabi.git'
     	  		} else {
 				echo "Repository already cloned"
       }
@@ -88,8 +88,8 @@ pipeline {
 	    script {
 	      sh 'cd /etc/ansible'
 	      sh 'pwd'
-	      sh 'chmod 400 Aplicatie-calculator/aws-key.pem'
-	      def playbook_status = sh(returnStatus: true, script: 'ansible-playbook ./Aplicatie-calculator/playbook.yaml -i ./Aplicatie-calculator/inventory --key-file ./Aplicatie-calculator/aws-key.pem')
+	      sh 'chmod 400 Licenta-gabi/aws-key.pem'
+	      def playbook_status = sh(returnStatus: true, script: 'ansible-playbook ./Licenta-gabi/playbook.yaml -i ./Licenta-gabi/inventory --key-file ./Licenta-gabi/aws-key.pem')
 	      if (playbook_status == 0) {
 		echo "Playbook executed successfully"
 	      } else {
