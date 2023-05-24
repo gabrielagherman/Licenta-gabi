@@ -23,8 +23,6 @@ pipeline {
 
   stage('Docker Build and Tag') {
            steps { 
-	      //sh ' docker socket'              
-	//sh 'sudo chmod 777 /var/run/docker.sock'
 		sh 'docker build -t webapp-calc-test-1:latest .' 
                 sh 'docker tag webapp-calc-test-1 gabrielagherman/webapp-calc-test-1:latest'
                
@@ -41,23 +39,7 @@ pipeline {
           }
         }
      
-      // stage('Run Docker container on Jenkins Agent') {
-             
-          //   steps 
-			//{
-          //   sh "docker run -d -p 8003:8080 gabrielagherman/calculator"
- 
-           // }
-        // }
- 
-	// stage("Git Checkout"){
-	//	 steps{
-	//		 sh 'pwd'
-	//		 sh 'git clone https://github.com/gabrielagherman/calculator-servlet-example.git'
-	//	 	 sh 'pwd'
-	//	 }
-	 //}
-	 
+   
 	 
 	stage("Git Checkout") {
  	 steps {
@@ -71,16 +53,6 @@ pipeline {
     }
   }
 }
-
-	 
-	// stage ("Run ansible playbook on remote hosts")
-	// {
-	//	 steps{
-	//		sh 'cd /etc/ansible'
-	//		sh 'pwd' 
-	//		sh 'ansible-playbook ./calculator-servlet-example/playbook.yaml -i ./calculator-servlet-example/inventory --key-file ./calculator-servlet-example/aws-key.pem'
-	//	 }
-	//}
 	 
 	 
 	 stage("Run ansible playbook on remote hosts") {
