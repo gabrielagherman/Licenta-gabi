@@ -7,7 +7,7 @@
     - name: run docker
       docker_container:
         name: java_container
-        image: gabrielagherman/webapp-calc-test-1:latest
+        image: gabrielagherman/sset-webapp:latest
         state: started
         restart: yes
         ports:
