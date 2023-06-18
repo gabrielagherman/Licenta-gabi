@@ -23,7 +23,7 @@ pipeline {
 
   stage('Docker Build and Tag') {
            steps { 
-		sh 'docker build -t sset-webapp:latest .' 
+		sh 'docker build -t diploma-webapp:latest .' 
                 sh 'docker tag  diploma-webapp gabrielagherman/diploma-webapp:latest'
                
           }
