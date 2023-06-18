@@ -24,7 +24,7 @@ pipeline {
   stage('Docker Build and Tag') {
            steps { 
 		sh 'docker build -t sset-webapp:latest .' 
-                sh 'docker tag  sset-webapp gabrielagherman/sset-webapp:latest'
+                sh 'docker tag  diploma-webapp gabrielagherman/diploma-webapp:latest'
                
           }
         }
@@ -33,7 +33,7 @@ pipeline {
           
             steps {
         withDockerRegistry([ credentialsId: "docker-cred", url: "" ]) {
-          sh  'docker push gabrielagherman/sset-webapp:latest'
+          sh  'docker push gabrielagherman/diploma-webapp:latest'
         }
                   
           }
